@@ -1,13 +1,13 @@
 ### Configuring the sample to use SQL Server
 
-1. Ensure your connection strings in `appsettings.json` point to a local SQL Server instance.
-1. Ensure the tool EF was already installed. You can find some help [here](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet)
+1. Asegúrese de que sus cadenas de conexión `appsettings.json` apunten a una instancia local de SQL Server.
+2. Asegúrese de que la herramienta EF ya esté instalada. Puedes encontrar ayuda [aquí](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet)
 
     ```
     dotnet tool update --global dotnet-ef
     ```
 
-1. Open a command prompt in the Web folder and execute the following commands:
+3. Abra un símbolo del sistema en la carpeta Web y ejecute los siguientes comandos:
 
     ```
     dotnet restore
@@ -16,13 +16,13 @@
     dotnet ef database update -c appidentitydbcontext -p ../Infrastructure/Infrastructure.csproj -s Web.csproj
     ```
 
-    These commands will create two separate databases, one for the store's catalog data and shopping cart information, and one for the app's user credentials and identity data.
+    Estos comandos crearán dos bases de datos separadas, una para los datos del catálogo de la tienda y la información del carrito de compras, y otra para las credenciales de usuario y los datos de identidad de la aplicación.
 
-1. Run the application.
+4. Ejecute la aplicación.
 
-    The first time you run the application, it will seed both databases with data such that you should see products in the store, and you should be able to log in using the demouser@microsoft.com account.
-
-    Note: If you need to create migrations, you can use these commands:
+    La primera vez que ejecute la aplicación, se generarán ambas bases de datos con datos que le permitirán ver los productos en la tienda y podrá iniciar sesión con la cuenta demouser@microsoft.com .
+    
+    Nota: Si necesita crear migraciones, puede usar estos comandos:
 
     ```
     -- create migration (from Web folder CLI)
