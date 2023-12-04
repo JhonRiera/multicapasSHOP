@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -56,8 +57,15 @@ public class CatalogViewModelService : ICatalogViewModelService
                 Id = i.Id,
                 Name = i.Name,
                 PictureUri = _uriComposer.ComposePicUri(i.PictureUri),
-                Price = i.Price
-            }).ToList(),
+                //Price = i.Price,
+                Price = 
+                Convert.ToDecimal(i.Price,
+                CultureInfo.InvariantCulture)
+        //Price = Math.Round(i.Price, 3),
+        //Price = Math.Round(i.Price, 3, MidpointRounding.AwayFromZero) 
+        //Price = Math.Truncate(i.Price * 1000m) / 1000m,
+
+    }).ToList(),
             Brands = (await GetBrands()).ToList(),
             Types = (await GetTypes()).ToList(),
             BrandFilterApplied = brandId ?? 0,
