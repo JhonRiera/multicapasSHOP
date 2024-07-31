@@ -9,7 +9,6 @@ public class AppIdentityDbContextSeed
 {
     public static async Task SeedAsync(AppIdentityDbContext identityDbContext, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
     {
-
         if (identityDbContext.Database.IsSqlServer())
         {
             identityDbContext.Database.Migrate();
@@ -17,7 +16,7 @@ public class AppIdentityDbContextSeed
 
         await roleManager.CreateAsync(new IdentityRole(BlazorShared.Authorization.Constants.Roles.ADMINISTRATORS));
 
-        var defaultUser = new ApplicationUser { UserName = "demouser@microsoft.com", Email = "demouser@microsoft.com" };
+        var defaultUser = new ApplicationUser { UserName = "sistemaCompras@pruebas.com", Email = "sistemaCompras@pruebas.com" };
         await userManager.CreateAsync(defaultUser, AuthorizationConstants.DEFAULT_PASSWORD);
 
         string adminUserName = "admin@microsoft.com";
@@ -29,4 +28,5 @@ public class AppIdentityDbContextSeed
             await userManager.AddToRoleAsync(adminUser, BlazorShared.Authorization.Constants.Roles.ADMINISTRATORS);
         }
     }
+
 }
